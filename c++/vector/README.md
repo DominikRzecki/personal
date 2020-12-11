@@ -1,2 +1,2 @@
 # vector
-simple c++ vector with few advantages over the stl one
+simple c++ vector container with few advantages (and disadvantages) over the stl one (work in progress)
