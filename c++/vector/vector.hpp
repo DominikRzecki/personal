@@ -7,9 +7,9 @@ namespace dr{
 	class vector{
 		public:
 			explicit vector();															
-			explicit vector(size_t size);
-			explicit vector(size_t size, const T& value);
-			explicit vector( const vector& other);
+			explicit vector(const size_t size);
+			explicit vector(const size_t size, const T& value);
+			explicit vector(const vector& other);
 			
 			~vector();
 			
@@ -17,32 +17,30 @@ namespace dr{
 			inline bool empty(){ if(v_size == 0){ return true; } return false; };
 			
 			void push_back(const T& value);
-			void push_back(T&& value);
+			void push_back(const T&& value);
 			void pop_back();
 			
+			void clear();
+			void erase(const size_t index);
+			void erase(const size_t first, const size_t last);
+			
 			T& operator[](size_t index) const{
-				if (index < 0 || index >= v_size) {
+				if (index >= v_size) {
         	throw "Invalid index access\n";
     		}
 				return *v_arr[index];
     	}
     
-    	/*vector &operator=(const dr::vector &object){
-      	v_size = other.size();
-      	
-				v_arr = new T*[v_size];
-				for(size_t i = 0; i<v_size; i++){
-					v_arr[i] = new T{other[i]};
-				}
-      	delete []d_arr;
-      	v_arr = obj.get_arr();
+    	vector &operator=(const vector &other){
+				~vector();
+				this.vector(other);
         return *this;
-    	}*/
+    	}
     	
 		private:
 			T** v_arr;
 			size_t v_size;
-			size_t capacity;
+			size_t v_capacity;
 	};
 }
 
@@ -53,13 +51,13 @@ dr::vector<T>::vector(){
 }
 
 template <typename T>
-dr::vector<T>::vector(size_t size){
+dr::vector<T>::vector(const size_t size){
 	v_arr = new T*[size]{nullptr};
 	v_size = size;
 }
 
 template <typename T>
-dr::vector<T>::vector(size_t size, const T& value){
+dr::vector<T>::vector(const size_t size, const T& value){
 	v_arr = new T*[size];
 	v_size = size;
 	for(size_t i = 0; i<v_size; i++){
@@ -91,7 +89,7 @@ void dr::vector<T>::push_back(const T& value){
 }
 
 template <typename T>
-void dr::vector<T>::push_back(T&& value){
+void dr::vector<T>::push_back(const T&& value){
 	T** new_arr = new T*[v_size+1];
 	for(size_t i = 0; i < v_size; i++){
 		new_arr[i] = v_arr[i];
@@ -105,7 +103,7 @@ void dr::vector<T>::push_back(T&& value){
 template <typename T>
 void dr::vector<T>::pop_back(){
 	if (empty()) {
-    throw "Empty container\n";
+    throw "Vector empty\n";
   }
 	v_size--;
 	delete v_arr[v_size];
@@ -115,4 +113,47 @@ void dr::vector<T>::pop_back(){
 	}
 	delete[] v_arr;
 	v_arr = new_arr;
+}
+
+template <typename T>
+void dr::vector<T>::clear(){
+	for (v_size; v_size >= 0 ; --v_size) {
+		delete v_arr[v_size];
+	}
+}
+
+template <typename T>
+void dr::vector<T>::erase(const size_t index){
+	if (index >= v_size) {
+  	throw "Invalid index access\n";
+  }
+	delete v_arr[index];
+	T** new_arr = new T*[v_size];
+	for(size_t i = 0; i < v_size; i++){
+		if(i == index){
+			i++;
+		}
+		new_arr[i] = v_arr[i];
+	}
+	v_size--;
+}
+
+template <typename T>
+void dr::vector<T>::erase(const size_t first, const size_t last){
+	if (last >= v_size || first > last) {
+  	throw "Invalid index access\n";
+  }
+  
+  for(size_t i = first; i < last; i++){
+  	delete v_arr[i];
+  }
+	T** new_arr = new T*[v_size];
+	for(size_t i = 0; i < v_size; i++){
+		if(i >= first && i <= last){
+			i++;
+		} else {
+			new_arr[i] = v_arr[i];
+		}
+	}
+	v_size = v_size - (last - first);
 }
