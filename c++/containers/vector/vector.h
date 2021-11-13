@@ -6,6 +6,7 @@ namespace dr{
 	template <typename T>
 	class vector{
 		public:
+
 			explicit vector();															
 			explicit vector(const size_t size);
 			explicit vector(const size_t size, const T& value);
