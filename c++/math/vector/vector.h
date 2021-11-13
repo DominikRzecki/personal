@@ -21,9 +21,14 @@ namespace dr::math {
     class vector : public std::array<T, N> {
     public:
 
-        //Vector cross product:
+        /*!
+         * Vector cross product of two vectors (2D or 3D)
+         * @tparam Tother type of other vector
+         * @tparam Nother size of other vector
+         * @param other other vector
+        */
         template<class Tother>
-        auto x(dr::math::vector<Tother, N> &other) {
+        auto cross(dr::math::vector<Tother, N> &other) {
             static_assert(N >= 2 && N <= 3, "Vector cross product only available in 2 - 3 dimensions! Vector cross product is only possible with n - 1 vectors for n dimensions");
 
             if constexpr(N == 2) {
@@ -46,7 +51,12 @@ namespace dr::math {
             }
         }
 
-        //Vector dot product
+        /*!
+         * Vector dot product two vectors
+         * @tparam Tother type of other vector
+         * @tparam Nother size of other vector
+         * @param other other vector
+        */
         template<typename Tother, size_t Nother>
         auto dot(dr::math::vector<Tother, Nother> &other) {
             decltype(this->data()[0] * other[0]) tmp{0};
@@ -62,7 +72,12 @@ namespace dr::math {
             return tmp;
         }
 
-        //Element-wise Multiplication
+        /*!
+         * Element-wise Multiplication two vectors
+         * @tparam Tother type of other vector
+         * @tparam Nother size of other vector
+         * @param other other vector
+        */
         template<typename Tother, size_t Nother>
         auto operator*(dr::math::vector<Tother, Nother> &other) {
             dr::math::vector<decltype(this->data()[0] * other.data()[0]), (N < Nother) * N + (Nother <= N) * Nother> tmp{0};
@@ -73,7 +88,12 @@ namespace dr::math {
             return tmp;
         }
 
-        //Element-wise Division
+        /*!
+         * Element-wise Division two vectors
+         * @tparam Tother type of other vector
+         * @tparam Nother size of other vector
+         * @param other other vector
+        */
         template<typename Tother, size_t Nother>
         auto operator/(dr::math::vector<Tother, Nother> &other) {
             dr::math::vector<decltype(this->data()[0] * other.data()[0]), (N < Nother) * N + (N >= Nother) * Nother> tmp{0};
@@ -84,7 +104,12 @@ namespace dr::math {
             return tmp;
         }
 
-        //Element-wise Modulo
+        /*!
+         * Element-wise Modulo two vectors
+         * @tparam Tother type of other vector
+         * @tparam Nother size of other vector
+         * @param other other vector
+        */
         template<size_t Nother>
         auto operator%(dr::math::vector<int, Nother> &other) {
             if constexpr(std::is_same<T, int>()) {
@@ -96,11 +121,14 @@ namespace dr::math {
 
                 return tmp;
             } else {
-                static_assert(std::is_same<T, int>(), "Modulo operations only allowed for intenegers!");
+                static_assert(std::is_same<T, int>(), "Modulo operations only allowed for integers!");
             }
         }
 
-        //Multiplication by a scalar
+        /*! Multiplication by a scalar
+         * @tparam Tscalar Type of scalar
+         * @param scalar  scalar
+         */
         template<typename Tscalar>
         auto operator*(Tscalar scalar) {
             dr::math::vector<decltype(this->data()[0] * scalar), N> tmp{0};
@@ -109,7 +137,11 @@ namespace dr::math {
             return tmp;
         }
 
-        //Division by a scalar
+        /*! Division by a scalar
+         * @tparam Tscalar Type of scalar
+         * @param scalar  scalar
+         * @returns dr::math::vector
+         */
         template<typename Tscalar>
         auto operator/(Tscalar scalar) {
             dr::math::vector<decltype(this->data()[0] * scalar), N> tmp{0};
@@ -118,7 +150,11 @@ namespace dr::math {
             return tmp;
         }
 
-        //Modulo
+        /*! Mpdulo with a scalar
+         * @tparam Tscalar Type of scalar
+         * @param scalar  scalar
+         * @returns dr::math::vector
+         */
         auto operator%(int scalar) {
             dr::math::vector<decltype(this->data()[0] * scalar), N> tmp{0};
             for (size_t i = 0; i < tmp.size(); i++)
@@ -126,7 +162,11 @@ namespace dr::math {
             return tmp;
         }
 
-        //Adding a scalar
+        /*! Adding a scalar
+         * @tparam Tscalar Type of scalar
+         * @param scalar  scalar
+         * @returns dr::math::vector
+         */
         template<typename Tscalar>
         auto operator+(Tscalar scalar) {
             dr::math::vector<decltype(this->data()[0] * scalar), N> tmp{0};
@@ -135,7 +175,11 @@ namespace dr::math {
             return tmp;
         }
 
-        //Subtracting a scalar
+        /*! Subtracting a scalar
+         * @tparam Tscalar Type of scalar
+         * @param scalar  scalar
+         * @returns dr::math::vector;
+         */
         template<typename Tscalar>
         auto operator-(Tscalar scalar) {
             dr::math::vector<decltype(this->data()[0] * scalar), N> tmp{0};
@@ -144,7 +188,12 @@ namespace dr::math {
             return tmp;
         }
 
-        //Element-wise sum of two vectors
+        /*!
+         * Element-wise sum two vectors
+         * @tparam Tother type of other vector
+         * @tparam Nother size of other vector
+         * @param other other vector
+        */
         template<typename Tother, size_t Nother>
         auto operator+(dr::math::vector<Tother, Nother> &other) {
             dr::math::vector<decltype(this->data()[0] * other[0]), (N < Nother) * N + (Nother <= N) * Nother> tmp{0};
@@ -155,7 +204,12 @@ namespace dr::math {
             return tmp;
         }
 
-        //Element-wise difference two vectors
+        /*!
+         * Element-wise difference two vectors
+         * @tparam Tother type of other vector
+         * @tparam Nother size of other vector
+         * @param other other vector
+        */
         template<typename Tother, size_t Nother>
         auto operator-(dr::math::vector<Tother, Nother> &other) {
             dr::math::vector<decltype(this->data()[0] * other[0]), (N < Nother) * N + (Nother <= N) * Nother> tmp{0};
@@ -165,7 +219,7 @@ namespace dr::math {
             return tmp;
         }
 
-        //sum of vector;
+        /// @returns sum of vector;
         T sum() {
             T sum = 0;
             for(auto& i : *this)
@@ -174,7 +228,7 @@ namespace dr::math {
             return sum;
         }
 
-        //Length of vector (slow)
+        ///@returns length of vector (slow)
         auto length() {
             T sum_of_squares {0};
             for(auto& i : *this)
@@ -183,7 +237,7 @@ namespace dr::math {
             return std::sqrt(sum_of_squares);
         }
 
-        //Length using the fast inverse square root algorithm
+        ///@returns Length using an inverted fast inverse square root algorithm. (Even tho it is inverting the inverse square root it should still be faster.
         auto fast_length() {
             T sum_of_squares {0};
             for(auto& i : *this)
@@ -192,13 +246,13 @@ namespace dr::math {
             return 1/fast_inverse_sqrt(sum_of_squares);
         }
 
-        //Return the unit vector
-        inline auto unit_vector() {
+        ///@returns the unit vector
+        inline auto unit() {
             return (*this)*1/length();
         }
 
-        //Return the unit vector using the fast inverse square root algorithm
-        inline auto fast_unit_vector() {
+        ///@returns the unit vector using the fast inverse square root algorithm (~1% error)
+        inline auto fast_unit() {
             T sum_of_squares {0};
             for(auto& i : *this)
                 sum_of_squares += (i * i);
@@ -208,7 +262,7 @@ namespace dr::math {
 
     private:
 
-        static auto fast_inverse_sqrt(float num) {
+        static auto fast_inverse_sqrt(float num) {                  //C++ version from wikipedia
             static_assert(std::numeric_limits<float>::is_iec559); // (enable only on IEEE 754)
 
             float const y = bit_cast<float>(
@@ -216,7 +270,7 @@ namespace dr::math {
             return y * (1.5f - (num * 0.5f * y * y));
         };
 
-        template <class T2, class T1>
+        template <class T2, class T1>                               //copied from stackoverflow
         static T2 bit_cast(T1 t1) {
             static_assert(sizeof(T1)==sizeof(T2), "Types must match sizes");
             static_assert(std::is_standard_layout<T1>::value && std::is_trivial<T1>::value, "Requires POD input");
