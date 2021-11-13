@@ -7,7 +7,7 @@ It aims to support not only real world operations, but also theoretical ones (i.
 
 dr::math::vector is based on std::array and relies heavily on metaprogramming for simplicity. As of now VLAs are not supported because the c++ standard and std::array doesn't support them either.
 
-##Examples
+## Examples
 
 The example program is located at ```personal/c++/examples/mathematical-vector.cpp```.
 
@@ -43,6 +43,7 @@ In the future the .dot() and .cross() functions will be made static because cros
     template <class ...Args>
     static auto cross(Args& ...args)
     ...
+    
 ```
 It shall be noted that the cross product of more-than-three-dimensional vectors doesn't exist in the real world and thus is only theoretical.
 The cross product of two-dimensional ones isn't recognised by the mathematicians either and, but used in computer graphics.
