@@ -8,6 +8,7 @@ It aims to support not only real world operations, but also theoretical ones (i.
 dr::math::vector is based on std::array and relies heavily on metaprogramming for simplicity. As of now VLAs are not supported because the c++ standard and std::array doesn't support them either.
 
 ##Examples
+
 The example program is located at ```personal/c++/examples/mathematical-vector.cpp```.
 
 ## Documentation
