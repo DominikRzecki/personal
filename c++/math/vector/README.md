@@ -7,6 +7,8 @@ It aims to support not only real world operations, but also theoretical ones (i.
 
 dr::math::vector is based on std::array and relies heavily on metaprogramming for simplicity. As of now VLAs are not supported because the c++ standard and std::array doesn't support them either.
 
+The library also supports std::ostream so it's easier to output the vectors using std::cout.
+
 ## Examples
 
 The example program is located at ```personal/c++/examples/mathematical-vector.cpp```.
@@ -45,6 +47,7 @@ In the future the .dot() and .cross() functions will be made static because cros
     ...
     
 ```
+### future thoughts
 It shall be noted that the cross product of more-than-three-dimensional vectors doesn't exist in the real world and thus is only theoretical.
 The cross product of two-dimensional ones isn't recognised by the mathematicians either and, but used in computer graphics.
 
@@ -52,6 +55,31 @@ It would be nice to allow the modulo operations for non-integers ut this needs a
 
 It might be useful to write a complex-number library and make it compatible with the two-dimensional dr::math::vector. ```(dr::math::vector<T, 2>)```
 
+### Sourcecode Documentation
+
 The sourcecode is documented using doxygen. (Description of each function is in the header file)
+
+### std::ostream Implementation
+
+```c++
+    ...
+    class vector{
+    ...
+    
+    ...
+        //Overriding << operator for usage in ostream classes
+        template <typename Type, size_t Number>
+        friend std::ostream& operator<<(std::ostream& os, const dr::math::vector<Type, Number>& vec);
+    };
+
+    template <typename Type, size_t Number>
+    std::ostream& operator<<(std::ostream& os, const dr::math::vector<Type, Number>& vec){
+        os << '[';
+        for(size_t i = 0; i < vec.size(); i++)
+            os << vec[i] << ((i != vec.size() - 1) ? ", " : "]");
+
+        return os;
+    }
+```
 
 *Dominik Rzecki*
