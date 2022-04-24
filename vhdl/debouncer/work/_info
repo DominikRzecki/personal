@@ -1,0 +1,123 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/dominik/Documents/FPGA/VHDL/vhdl-lib/debouncer
+Ede10_lite
+Z1 w1650615342
+Z2 DPx4 work 19 de10_lite_const_pkg 0 22 I`g_m36dU[RC^IWSlUZm`3
+Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 2
+R0
+Z6 8./example/DE10_LITE/DE10_LITE.vhd
+Z7 F./example/DE10_LITE/DE10_LITE.vhd
+l0
+L17 1
+Vm==mj]cJC97Ym=i3dXheS2
+!s100 FcfVoMjHMHMLU<=YDT7J^1
+Z8 OV;C;2020.1;71
+31
+Z9 !s110 1650615600
+!i10b 1
+Z10 !s108 1650615600.000000
+Z11 !s90 -explicit|-93|./example/DE10_LITE/DE10_LITE.vhd|-work|./work|
+!s107 ./example/DE10_LITE/DE10_LITE.vhd|
+!i113 1
+Z12 o-explicit -93 -work ./work
+Z13 tExplicit 1 CvgOpt 0
+Artl
+Z14 DEx4 work 9 debouncer 0 22 1mZdQ>]A69PSdUKCi[D5j3
+R2
+R3
+R4
+R5
+DEx4 work 9 de10_lite 0 22 m==mj]cJC97Ym=i3dXheS2
+!i122 2
+l42
+L38 31
+VK0>iW2PnT0PA]XU4H8FgK2
+!s100 XYaRfG_SC?_lQLhBoJNY=3
+R8
+31
+R9
+!i10b 1
+R10
+R11
+Z15 !s107 ./example/DE10_LITE/DE10_LITE.vhd|
+!i113 1
+R12
+R13
+Pde10_lite_const_pkg
+R3
+R4
+R5
+!i122 1
+w1562129244
+R0
+8./example/DE10_LITE/DE10_LITE_const_pkg.vhd
+F./example/DE10_LITE/DE10_LITE_const_pkg.vhd
+l0
+L14 1
+VI`g_m36dU[RC^IWSlUZm`3
+!s100 kLoh:`8gPfHR`k7WKATE03
+R8
+31
+R9
+!i10b 1
+R10
+!s90 -explicit|-93|./example/DE10_LITE/DE10_LITE_const_pkg.vhd|-work|./work|
+!s107 ./example/DE10_LITE/DE10_LITE_const_pkg.vhd|
+!i113 1
+R12
+R13
+Edebouncer
+Z16 w1650615590
+R3
+R4
+R5
+!i122 0
+R0
+Z17 8./src/debouncer.vhd
+Z18 F./src/debouncer.vhd
+l0
+L15 1
+V1mZdQ>]A69PSdUKCi[D5j3
+!s100 _:6<oQUTS`QaIB8Tz<6gH1
+R8
+31
+R9
+!i10b 1
+R10
+Z19 !s90 -explicit|-93|./src/debouncer.vhd|-work|./work|
+Z20 !s107 ./src/debouncer.vhd|
+!i113 1
+R12
+R13
+Artl
+R3
+R4
+R5
+R14
+!i122 0
+l36
+L24 59
+VjMDHe3hO[nb3fM`KOF2>z3
+!s100 H?ezVa0T8l]jnTg1M6H3=3
+R8
+31
+R9
+!i10b 1
+R10
+R19
+R20
+!i113 1
+R12
+R13

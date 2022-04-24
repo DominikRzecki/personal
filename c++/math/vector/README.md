@@ -5,7 +5,7 @@ This library adds the support for mathematical vectors. (Work in progress)
 
 It aims to support not only real world operations, but also theoretical ones (i.e. cross product of 4 or more dimensional vectors)
 
-dr::math::vector is based on std::array and relies heavily on metaprogramming for simplicity. As of now VLAs are not supported because the c++ standard and std::array doesn't support them either.
+dr::math::vector is based on std::array and relies heavily on metaprogramming for simplicity. As of now VLAs are not supported because the c++ standard and std::array don't support them either.
 
 The library also supports std::ostream so it's easier to output the vectors using std::cout.
 

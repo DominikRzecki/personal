@@ -1,0 +1,8 @@
+# vsim -do "tb_debouncer.do" tb_debouncer
+#  
+# Start time: 17:45:42 on Apr 18,2022
+# ** Error (suppressible): (vsim-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# Error loading design
+# End time: 17:45:43 on Apr 18,2022, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0

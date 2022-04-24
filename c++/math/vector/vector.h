@@ -17,6 +17,7 @@ namespace dr::math {
      * Because VLAs(Variable length arrays) are not supported by the c++ standard, only by some compilers, math::vector doesn't support them neither.
      * The size of your vector has to be known at compile-time!
     */
+
     template<class T, std::size_t N>
     class vector : public std::array<T, N> {
     public:
@@ -28,7 +29,7 @@ namespace dr::math {
          * @param other other vector
         */
         template<class Tother>
-        auto cross(dr::math::vector<Tother, N> &other) {
+        static auto cross(dr::math::vector<Tother, N> &other) {
             static_assert(N >= 2 && N <= 3, "Vector cross product only available in 2 - 3 dimensions! Vector cross product is only possible with n - 1 vectors for n dimensions");
 
             if constexpr(N == 2) {
@@ -57,16 +58,19 @@ namespace dr::math {
          * @tparam Nother size of other vector
          * @param other other vector
         */
-        template<typename Tother, size_t Nother>
-        auto dot(dr::math::vector<Tother, Nother> &other) {
-            decltype(this->data()[0] * other[0]) tmp{0};
+        //template<typename Tone, size_t None, typename Ttwo, size_t Ntwo>
+        //static auto dot(dr::math::vector<Tone, None> &one, dr::math::vector<Ttwo, Ntwo> &two) {
 
-            if constexpr(N > Nother) {
-                for (size_t i = 0; i < Nother; i++)
-                    tmp += this->data()[i] * other.data()[i];
+        template <class Tone, int None, class Ttwo, int Ntwo>
+        static auto dot(Tone const(&one)[None], Ttwo const(&two)[Ntwo]) {
+            decltype(one[0] * two[0]) tmp{0};
+
+            if constexpr(None > Ntwo) {
+                for (size_t i = 0; i < Ntwo; i++)
+                    tmp += one[i] * two[i];
             } else {
-                for (size_t i = 0; i < N; i++)
-                    tmp += this->data()[i] * other.data()[i];
+                for (size_t i = 0; i < None; i++)
+                    tmp += one[i] * two[i];
             }
             int v;
             return tmp;
