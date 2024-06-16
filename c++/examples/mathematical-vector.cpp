@@ -24,6 +24,8 @@ int main() {
     for(auto& i : b)
         std::cin >> i;
 
+    dr::math::vector<float, 2> g{2.0f, 3.0f};
+
     std::cout<<"vector a: " << a <<"\n";
     std::cout<<"vector b: " << b <<"\n\n";
 
@@ -31,7 +33,7 @@ int main() {
     std::cout << "sum of vec b: "<< b.sum() << "\n";
     std::cout << "element-wise product: " << a * b << "\n";
     std::cout <<"vector cross product a.x(b): "<< a.cross(b) <<"\n"; //Still needs to be implemented for 4 and more dimensional vectors!
-    std::cout << "dot-product: "<< vec::dot(a, b) << "\n";
+    //std::cout << "dot-product: "<< dr::math::vector<float,2>::dot(a, b) << "\n";
     std::cout <<"element-wise sum of vectors: "<< a + b <<"\n";
     std::cout <<"element-wise difference of vectors: "<< a - b <<"\n";
     std::cout <<"vector a * 2: "<< a * 2 <<"\n";

@@ -1,4 +1,4 @@
-# <span style="color:red">dr::math::vector</span>
+<span style="color:red">dr::math::vector</span>
 ***
 
 This library adds the support for mathematical vectors. (Work in progress)
