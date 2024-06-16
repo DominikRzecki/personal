@@ -144,3 +144,8 @@ incremental_db/
 db/
 _output_files/
 PLLJ_PLLSPE_INFO.txt
+
+work/
+vsim.wlf
+wlftizooIr
+transcript
